@@ -184,6 +184,22 @@
   .expo li::before { content: ""; width: 0.5rem; height: 0.5rem; background: #FFFFFF; margin-top: 0.55em; }
   .expo small { display: block; font-size: 0.9rem; }
 
+  /* ---------- Programmänderung ---------- */
+  .update { background: var(--blue-dark); color: #FFFFFF; }
+  .update .wrap { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: center; padding-block: 0.8rem; }
+  .update .flag, .changes .flag { background: var(--yellow); color: #000000; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.15rem 0.55rem; }
+  .update p { flex: 1 1 32rem; }
+  .update a { font-weight: 700; display: inline-flex; align-items: center; gap: 0.45rem; }
+  .update a::before { content: ""; width: 0.5rem; height: 0.5rem; background: var(--yellow); }
+  .changes { border: 3px solid var(--blue); padding: 1rem 1.25rem; margin-bottom: 1.5rem; display: grid; gap: 0.5rem; }
+  .changes h3 { font-size: 1.2rem; display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+  .changes s { text-decoration-thickness: 2px; }
+  .chip.changed { background: var(--text); color: var(--bg); }
+  .program > li.changed { box-shadow: inset 5px 0 0 var(--blue); }
+  .program > li.now .chip.changed { background: #000000; color: #FFFFFF; }
+  .speaker.cancelled .initials { background: var(--grey); color: #000000; }
+  .speaker.cancelled h3, .speaker.cancelled p { text-decoration: line-through; text-decoration-thickness: 2px; }
+
   /* ---------- Speakers ---------- */
   .feature {
     display: grid; grid-template-columns: 12rem minmax(0, 1fr); gap: 2rem; align-items: center;
@@ -325,6 +341,14 @@
   </div>
 </header>
 
+<div class="update" role="status">
+  <div class="wrap">
+    <span class="flag">Programmänderung</span>
+    <p><b>Donnerstag, 01.10.:</b> Der Vortrag zu Kleinsatelliten von Felix Motzki entfällt. Der Drohnen-Vortrag von Dr. Andreas Knirsch beginnt bereits um 10:00 Uhr, die Kaffeepause dauert von 10:30 bis 11:15 Uhr.</p>
+    <a href="#agenda">Zur Agenda</a>
+  </div>
+</div>
+
 <main id="top">
   <section class="hero">
     <div class="wrap">
@@ -410,6 +434,15 @@
         </div>
       </div>
 
+      <div class="changes">
+        <h3><span class="flag">Geändert</span>Programmänderung am Donnerstag, 01.10.2026</h3>
+        <ul class="sq-list">
+          <li><span><s>10:00 NextSpace: Kleinsatelliten made in Germany (Felix Motzki, Reflex Aerospace GmbH)</s> entfällt.</span></li>
+          <li><span>Der Vortrag von Dr. Andreas Knirsch (Wingcopter GmbH) zu autonomen Drohnen beginnt bereits um <b>10:00 Uhr</b> statt um 10:30 Uhr.</span></li>
+          <li><span>Die Kaffeepause beginnt um <b>10:30 Uhr</b> und dauert bis 11:15 Uhr. Ab 11:15 Uhr bleibt das Programm unverändert.</span></li>
+        </ul>
+      </div>
+
       <div class="live" id="live" aria-live="polite"><b>Live</b><span id="live-text">Am 30.09. und 01.10.2026 wird hier der laufende Programmpunkt angezeigt.</span></div>
 
       <div class="agenda-grid">
@@ -442,9 +475,8 @@
             <li data-start="08:30"><time>08:30</time><div class="item"><span class="chip break">Catering</span><h3>Willkommens-Kaffee</h3></div></li>
             <li data-start="09:00"><time>09:00</time><div class="item"><span class="chip all">Vortrag</span><h3>Chancen von Pivot-Technologien durch Mechatronik-Integration erkennen und nutzen</h3><p class="who">Prof. Jörg Franke, Lehrstuhl FAPS</p></div></li>
             <li data-start="09:30"><time>09:30</time><div class="item"><span class="chip all">Vortrag</span><h3>Intelligenz auf der richtigen Ebene: Warum Foundation Models Mechatronik und funktionale Sicherheit nicht lösen</h3><p class="who">Dr. Shota Okujava, isento GmbH</p></div></li>
-            <li data-start="10:00"><time>10:00</time><div class="item"><span class="chip all">Vortrag</span><h3>NextSpace: Kleinsatelliten made in Germany</h3><p class="who">Felix Motzki, Reflex Aerospace GmbH</p></div></li>
-            <li data-start="10:30"><time>10:30</time><div class="item"><span class="chip all">Vortrag</span><h3>Innovation, Fail-Safe, Flugbeweis: Der dreistufige Weg autonomer Drohnen in den Himmel</h3><p class="who">Dr. Andreas Knirsch, Wingcopter GmbH</p></div></li>
-            <li data-start="11:00"><time>11:00</time><div class="item"><span class="chip break">Pause</span><h3>Kaffeepause</h3></div></li>
+            <li data-start="10:00" class="changed"><time>10:00</time><div class="item"><span class="chip changed">Vorgezogen, vorher 10:30</span><h3>Innovation, Fail-Safe, Flugbeweis: Der dreistufige Weg autonomer Drohnen in den Himmel</h3><p class="who">Dr. Andreas Knirsch, Wingcopter GmbH</p></div></li>
+            <li data-start="10:30" class="changed"><time>10:30</time><div class="item"><span class="chip changed">Verlängert bis 11:15</span><h3>Kaffeepause</h3></div></li>
             <li data-start="11:15"><time>11:15</time><div class="item"><span class="chip all">Vortrag</span><h3>Disruptive 3D-Röntgenbildgebung durch Feldemissionsquellen</h3><p class="who">Dr. Christian Hofmann, Siemens Healthineers AG</p></div></li>
             <li data-start="11:45"><time>11:45</time><div class="item"><span class="chip all">Vortrag</span><h3>3D-gedruckte Hochfrequenzkomponenten</h3><p class="who">Jacob Griese, Golden Devices GmbH</p></div></li>
             <li data-start="12:15"><time>12:15</time><div class="item"><span class="chip all">Vortrag</span><h3>Vom Plasma zum Fusionskraftwerk: Von der wissenschaftlichen Vision zur industriellen Realität</h3><p class="who">Dr. Martin Reithinger, Framatome GmbH</p></div></li>
@@ -509,8 +541,8 @@
       <div class="speakers">
         <article class="speaker"><div class="initials" aria-hidden="true">JF</div><span class="slot">Do 09:00</span><h3>Prof. Jörg Franke</h3><p>Lehrstuhl FAPS</p><p class="talk">Chancen von Pivot-Technologien durch Mechatronik-Integration erkennen und nutzen</p></article>
         <article class="speaker"><div class="initials" aria-hidden="true">SO</div><span class="slot">Do 09:30</span><h3>Dr. Shota Okujava</h3><p>isento GmbH</p><p class="talk">Intelligenz auf der richtigen Ebene: Warum Foundation Models Mechatronik und funktionale Sicherheit nicht lösen</p></article>
-        <article class="speaker"><div class="initials" aria-hidden="true">FM</div><span class="slot">Do 10:00</span><h3>Felix Motzki</h3><p>Reflex Aerospace GmbH</p><p class="talk">NextSpace: Kleinsatelliten made in Germany</p></article>
-        <article class="speaker"><div class="initials" aria-hidden="true">AK</div><span class="slot">Do 10:30</span><h3>Dr. Andreas Knirsch</h3><p>Wingcopter GmbH</p><p class="talk">Innovation, Fail-Safe, Flugbeweis: Der dreistufige Weg autonomer Drohnen in den Himmel</p></article>
+        <article class="speaker cancelled"><div class="initials" aria-hidden="true">FM</div><span class="chip changed">Vortrag entfällt</span><h3>Felix Motzki</h3><p>Reflex Aerospace GmbH</p><p class="talk">NextSpace: Kleinsatelliten made in Germany</p></article>
+        <article class="speaker"><div class="initials" aria-hidden="true">AK</div><span class="slot">Do 10:00 · vorgezogen</span><h3>Dr. Andreas Knirsch</h3><p>Wingcopter GmbH</p><p class="talk">Innovation, Fail-Safe, Flugbeweis: Der dreistufige Weg autonomer Drohnen in den Himmel</p></article>
         <article class="speaker"><div class="initials" aria-hidden="true">CH</div><span class="slot">Do 11:15</span><h3>Dr. Christian Hofmann</h3><p>Siemens Healthineers AG</p><p class="talk">Disruptive 3D-Röntgenbildgebung durch Feldemissionsquellen</p></article>
         <article class="speaker"><div class="initials" aria-hidden="true">JG</div><span class="slot">Do 11:45</span><h3>Jacob Griese</h3><p>Golden Devices GmbH</p><p class="talk">3D-gedruckte Hochfrequenzkomponenten</p></article>
         <article class="speaker"><div class="initials" aria-hidden="true">MR</div><span class="slot">Do 12:15</span><h3>Dr. Martin Reithinger</h3><p>Framatome GmbH</p><p class="talk">Vom Plasma zum Fusionskraftwerk: Von der wissenschaftlichen Vision zur industriellen Realität</p></article>
